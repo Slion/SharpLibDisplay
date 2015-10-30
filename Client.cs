@@ -18,113 +18,19 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//using System.Windows.Forms;
-
 using System.ServiceModel;
-using System.ServiceModel.Channels;
 
 
 namespace SharpLib.Display
 {
     /// <summary>
-    /// Client side Sharp Display callback implementation.
-    /// </summary>
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
-    public class Callback : ICallback, IDisposable
-    {
-        //private MainForm MainForm { get; set; }
-
-        public Callback()
-        {
-            
-        }
-
-        /// <summary>
-        /// Not used I believe.
-        /// </summary>
-        public void OnConnected()
-        {
-            //Debug.Assert(Thread.CurrentThread.IsThreadPoolThread);
-            //Trace.WriteLine("Callback thread = " + Thread.CurrentThread.ManagedThreadId);
-
-            //MessageBox.Show("OnConnected()", "Client");
-        }
-
-
-        public void OnCloseOrder()
-        {
-            //Debug.Assert(Thread.CurrentThread.IsThreadPoolThread);
-            //Trace.WriteLine("Callback thread = " + Thread.CurrentThread.ManagedThreadId);
-
-            //MessageBox.Show("OnServerClosing()", "Client");
-            //MainForm.CloseConnectionThreadSafe();
-            //MainForm.CloseThreadSafe();
-        }
-
-        //From IDisposable
-        public void Dispose()
-        {
-
-        }
-    }
-
-
-    /// <summary>
-    /// Client side implementation of our Sharp Display Service.
-    /// </summary>
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
-    public class Client : DuplexClientBase<IService>
-    {
-        public string SessionId { get { return InnerChannel.SessionId; } }
-
-        public Client(ICallback aCallback)
-            : base(new InstanceContext(aCallback), new NetTcpBinding(SecurityMode.None, true), new EndpointAddress("net.tcp://localhost:8001/DisplayService"))
-        { }
-
-        public void SetName(string aClientName)
-        {
-            Channel.SetName(aClientName);
-        }
-
-        public void SetLayout(TableLayout aLayout)
-        {
-            Channel.SetLayout(aLayout);
-        }
-
-        public void SetField(DataField aField)
-        {
-            Channel.SetField(aField);
-        }
-
-        public void SetFields(System.Collections.Generic.IList<DataField> aFields)
-        {
-            Channel.SetFields(aFields);
-        }
-
-        public int ClientCount()
-        {
-            return Channel.ClientCount();
-        }
-
-        public bool IsReady()
-        {
-            return State == CommunicationState.Opened || State == CommunicationState.Created;
-        }
-    }
-
-
-    /// <summary>
     /// Handle connection with our Sharp Display Server.
     /// If the connection is faulted it will attempt to restart it.
     /// </summary>
-    public class DisplayClient
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
+    public class Client: ICallback, IDisposable
     {
-        private Client iClient;
-        private Callback iCallback;
+        private ClientSession iClient;
         private bool resetingConnection = false;
 
         //private MainForm MainForm { get; set; }
@@ -133,8 +39,11 @@ namespace SharpLib.Display
         private TableLayout Layout { get; set; }
         private System.Collections.Generic.IList<DataField> Fields { get; set; }
 
+        public delegate void CloseOrderDelegate();
+        public event CloseOrderDelegate CloseOrderEvent;
 
-        public DisplayClient(/*MainForm aMainForm*/)
+
+        public Client(/*MainForm aMainForm*/)
         {
             //MainForm = aMainForm;
             Name = "";
@@ -146,8 +55,7 @@ namespace SharpLib.Display
         /// </summary>
         public void Open()
         {
-            iCallback = new Callback();
-            iClient = new Client(iCallback);
+            iClient = new ClientSession(this);
         }
 
         /// <summary>
@@ -157,8 +65,6 @@ namespace SharpLib.Display
         {
             iClient.Close();
             iClient = null;
-            iCallback.Dispose();
-            iCallback = null;
         }
 
         /// <summary>
@@ -167,7 +73,7 @@ namespace SharpLib.Display
         /// <returns>True if a server connection is available. False otherwise.</returns>
         public bool IsReady()
         {
-            return (iClient != null && iCallback != null && iClient.IsReady());
+            return (iClient != null && iClient.IsReady());
         }
 
         /// <summary>
@@ -317,6 +223,47 @@ namespace SharpLib.Display
             return iClient.ClientCount();
         }
 
+        /// <summary>
+        /// From ICallback
+        /// Not used I believe.
+        /// </summary>
+        public void OnConnected()
+        {
+            //Debug.Assert(Thread.CurrentThread.IsThreadPoolThread);
+            //Trace.WriteLine("Callback thread = " + Thread.CurrentThread.ManagedThreadId);
+
+            //MessageBox.Show("OnConnected()", "Client");
+        }
+
+        /// <summary>
+        /// From ICallback
+        /// </summary>
+        public void OnCloseOrder()
+        {
+            //Debug.Assert(Thread.CurrentThread.IsThreadPoolThread);
+            //Trace.WriteLine("Callback thread = " + Thread.CurrentThread.ManagedThreadId);
+
+            //MessageBox.Show("OnServerClosing()", "Client");
+            //MainForm.CloseConnectionThreadSafe();
+            //MainForm.CloseThreadSafe();
+
+            if (IsReady())
+            {
+                string sessionId = iClient.SessionId;
+                //Trace.TraceInformation("Closing client: " + sessionId);
+                Close();
+                //Trace.TraceInformation("Closed client: " + sessionId);
+                //Fire event
+                CloseOrderEvent();
+            }
+
+        }
+
+        //From IDisposable
+        public void Dispose()
+        {
+
+        }
 
 
     }
