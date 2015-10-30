@@ -1,34 +1,34 @@
-﻿//
-// Copyright (C) 2014-2015 Stéphane Lenclud.
+﻿// Copyright (C) 2014-2015 Stéphane Lenclud.
 //
-// This file is part of SharpDisplayManager.
+// This file is part of SharpLibDisplay.
 //
-// SharpDisplayManager is free software: you can redistribute it and/or modify
+// SharpLibDisplay is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// SharpDisplayManager is distributed in the hope that it will be useful,
+// SharpLibDisplay is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with SharpDisplayManager.  If not, see <http://www.gnu.org/licenses/>.
+// along with SharpLibDisplay.  If not, see <http://www.gnu.org/licenses/>.
 //
+
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using SharpDisplay;
+//using System.Windows.Forms;
+
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
 
-namespace SharpDisplayClient
+namespace SharpLib.Display
 {
     /// <summary>
     /// Client side Sharp Display callback implementation.
@@ -36,11 +36,11 @@ namespace SharpDisplayClient
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class Callback : ICallback, IDisposable
     {
-        private MainForm MainForm { get; set; }
+        //private MainForm MainForm { get; set; }
 
-        public Callback(MainForm aMainForm)
+        public Callback()
         {
-            MainForm = aMainForm;
+            
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace SharpDisplayClient
             //Debug.Assert(Thread.CurrentThread.IsThreadPoolThread);
             //Trace.WriteLine("Callback thread = " + Thread.CurrentThread.ManagedThreadId);
 
-            MessageBox.Show("OnConnected()", "Client");
+            //MessageBox.Show("OnConnected()", "Client");
         }
 
 
@@ -61,8 +61,8 @@ namespace SharpDisplayClient
             //Trace.WriteLine("Callback thread = " + Thread.CurrentThread.ManagedThreadId);
 
             //MessageBox.Show("OnServerClosing()", "Client");
-            MainForm.CloseConnectionThreadSafe();
-            MainForm.CloseThreadSafe();
+            //MainForm.CloseConnectionThreadSafe();
+            //MainForm.CloseThreadSafe();
         }
 
         //From IDisposable
@@ -127,16 +127,16 @@ namespace SharpDisplayClient
         private Callback iCallback;
         private bool resetingConnection = false;
 
-        private MainForm MainForm { get; set; }
+        //private MainForm MainForm { get; set; }
         public string SessionId { get { return iClient.SessionId; } }
         public string Name { get; private set; }
         private TableLayout Layout { get; set; }
         private System.Collections.Generic.IList<DataField> Fields { get; set; }
 
 
-        public DisplayClient(MainForm aMainForm)
+        public DisplayClient(/*MainForm aMainForm*/)
         {
-            MainForm = aMainForm;
+            //MainForm = aMainForm;
             Name = "";
             Fields = new DataField[]{};
         }
@@ -146,7 +146,7 @@ namespace SharpDisplayClient
         /// </summary>
         public void Open()
         {
-            iCallback = new Callback(MainForm);
+            iCallback = new Callback();
             iClient = new Client(iCallback);
         }
 
