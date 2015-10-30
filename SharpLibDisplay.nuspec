@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>SharpLibDisplay</id>
+        <version>0.0.0</version>
+        <title>C# Win32 Library</title>
+        <authors>Stéphane Lenclud</authors>
+        <owners>Stéphane Lenclud</owners>
+        <licenseUrl>http://www.gnu.org/copyleft/gpl.html</licenseUrl>
+        <projectUrl>https://sharplibdisplay.codeplex.com/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>C# Consumer Eletronics Display Library.</description>
+        <releaseNotes>v0.0.0
+Non functional.</releaseNotes>
+        <copyright>Stéphane Lenclud</copyright>
+        <language />
+        <tags>Display LCD VFD HTPC</tags>
+    </metadata>
+    <files>
+        <file src="bin\x86\Release\SharpLibDisplay.dll" target="lib\net20\SharpLibDisplay.dll" />
+    </files>
+</package>
