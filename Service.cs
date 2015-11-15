@@ -21,7 +21,6 @@ using System.ServiceModel;
 
 namespace SharpLib.Display
 {
-
     /// <summary>
     /// Define our display service.
     /// Clients and servers must implement it to communicate with one another.

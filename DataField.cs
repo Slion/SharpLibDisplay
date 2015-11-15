@@ -25,6 +25,7 @@ namespace SharpLib.Display
     /// <summary>
     /// Define a data field on our display.
     /// Data field can be either text or bitmap.
+    /// Each field is taking part in our display screen layout.
     /// </summary>
     [DataContract]
     public class DataField
@@ -41,7 +42,12 @@ namespace SharpLib.Display
             Bitmap = null;
         }
 
-        //Text constructor
+        /// <summary>
+        /// Text field constructor.
+        /// </summary>
+        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
+        /// <param name="aText">Text content.</param>
+        /// <param name="aAlignment">Text content alignment.</param>
         public DataField(int aIndex, string aText = "", ContentAlignment aAlignment = ContentAlignment.MiddleLeft)
         {
             ColumnSpan = 1;
@@ -49,18 +55,22 @@ namespace SharpLib.Display
             Index = aIndex;
             Text = aText;
             Alignment = aAlignment;
-            //
+            //No bitmap then
             Bitmap = null;
         }
 
-        //Bitmap constructor
+        /// <summary>
+        /// Bitmap field constructor.
+        /// </summary>
+        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
+        /// <param name="aBitmap">Bitmap content.</param>
         public DataField(int aIndex, Bitmap aBitmap)
         {
             ColumnSpan = 1;
             RowSpan = 1;
             Index = aIndex;
             Bitmap = aBitmap;
-            //Text
+            //No text then
             Text = "";
             Alignment = ContentAlignment.MiddleLeft;
         }
