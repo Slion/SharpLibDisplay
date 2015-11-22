@@ -19,42 +19,114 @@ namespace ConsoleClient
             Console.WriteLine("-----------------------------------");
             Console.WriteLine("SharpLibDisplay console client.");
             Console.WriteLine("Commands:");
-            Console.WriteLine("   q: close client");
+            Console.WriteLine("   q: quit");
+            Console.WriteLine("   c: close client");
+            Console.WriteLine("   o: open client");
+            Console.WriteLine("   l: set layout");
+            Console.WriteLine("   sdf: set data field");
+            Console.WriteLine("   stf: set table field");
             Console.WriteLine("-----------------------------------");
 
             //Create our client and connect to our server
             iClient = new Client();
             iClient.CloseOrderEvent += OnCloseOrder;
-            iClient.Open("net.tcp://localhost:8111/DisplayService");
 
-            //Connect using unique name
-            //string name = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt");
-            string name = "Client-" + (iClient.ClientCount() - 1);
-            iClient.SetName(name);
-            //Text = Text + ": " + name;
-            //Text = "[[" + name + "]]  " + iClient.SessionId;
-
-            Console.WriteLine("Name: " + name);
-
+            OpenClient();
 
             CommunicationState state = iClient.SessionState;
 
             Console.WriteLine("State: " + state.ToString());
 
-            while (Console.ReadLine() != "q")
+            bool quit = false;
+            while (!quit)
             {
+                string command = Console.ReadLine();
+                quit = DispatchCommand(command);
+
+                //Output our state if it was changed
                 if (state != iClient.SessionState)
                 {
                     //State has changed
                     state = iClient.SessionState;
                     Console.WriteLine("State: " + state.ToString());
                 }
-
             }
 
             iClient.Close();
 
         }
+
+
+        public static bool DispatchCommand(string aCommand)
+        {
+            switch (aCommand)
+            {
+                case "q":
+                    return true;
+
+                case "c":
+                    iClient.Close();
+                    break;
+
+                case "l":
+                    SetLayout();
+                    break;
+
+                case "o":
+                    OpenClient();
+                    break;
+
+                case "sdf":
+                    SetDataField();
+                    break;
+
+                case "stf":
+                    SetTableField();
+                    break;
+
+            }
+
+            return false;
+        }
+
+        static void OpenClient()
+        {
+            iClient.Open("net.tcp://localhost:8111/DisplayService");
+
+            //Connect using unique name
+            string name = "Client-" + (iClient.ClientCount() - 1);
+            iClient.SetName(name);
+            Console.WriteLine("Name: " + name);
+        }
+
+        public static void SetLayout()
+        {
+            TableLayout layout = new TableLayout(1, 1);
+            iClient.SetLayout(layout);
+        }
+
+        public static void SetDataField()
+        {
+            DataField field = new DataField();
+            //Set our fields
+            iClient.CreateFields(new DataField[]
+            {
+                field
+            });
+            //
+            iClient.SetField(field);
+        }
+
+        public static void SetTableField()
+        {
+            TableField field = new TableField();
+            iClient.CreateFields(new DataField[]
+            {
+                field
+            });
+            iClient.SetField(field);
+        }
+
 
         public static void OnCloseOrder()
         {

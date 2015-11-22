@@ -28,90 +28,18 @@ namespace SharpLib.Display
     /// Each field is taking part in our display screen layout.
     /// </summary>
     [DataContract]
+    [KnownType(typeof(TableField))]
     public class DataField
     {
         public DataField()
         {
             Index = 0;
-            ColumnSpan = 1;
-            RowSpan = 1;
-            //Text
-            Text = "";
-            Alignment = ContentAlignment.MiddleLeft;
-            //Bitmap
-            Bitmap = null;
         }
-
-        /// <summary>
-        /// Text field constructor.
-        /// </summary>
-        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
-        /// <param name="aText">Text content.</param>
-        /// <param name="aAlignment">Text content alignment.</param>
-        public DataField(int aIndex, string aText = "", ContentAlignment aAlignment = ContentAlignment.MiddleLeft)
-        {
-            ColumnSpan = 1;
-            RowSpan = 1;
-            Index = aIndex;
-            Text = aText;
-            Alignment = aAlignment;
-            //No bitmap then
-            Bitmap = null;
-        }
-
-        /// <summary>
-        /// Bitmap field constructor.
-        /// </summary>
-        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
-        /// <param name="aBitmap">Bitmap content.</param>
-        public DataField(int aIndex, Bitmap aBitmap)
-        {
-            ColumnSpan = 1;
-            RowSpan = 1;
-            Index = aIndex;
-            Bitmap = aBitmap;
-            //No text then
-            Text = "";
-            Alignment = ContentAlignment.MiddleLeft;
-        }
-
 
         //Generic layout properties
         [DataMember]
         public int Index { get; set; }
 
-        [DataMember]
-        public int Column { get; set; }
-
-        [DataMember]
-        public int Row { get; set; }
-
-        [DataMember]
-        public int ColumnSpan { get; set; }
-
-        [DataMember]
-        public int RowSpan { get; set; }
-
-        //Text properties
-        [DataMember]
-        public string Text { get; set; }
-
-        [DataMember]
-        public ContentAlignment Alignment { get; set; }
-
-        //Bitmap properties
-        [DataMember]
-        public Bitmap Bitmap { get; set; }
-
-        //
-        public bool IsBitmap { get { return Bitmap != null; } }
-        //
-        public bool IsText { get { return Bitmap == null; } }
-        //
-        public bool IsSameLayout(DataField aField)
-        {
-            return (aField.ColumnSpan == ColumnSpan && aField.RowSpan == RowSpan);
-        }
     }
 
 }
