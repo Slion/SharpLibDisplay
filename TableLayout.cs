@@ -29,6 +29,13 @@ namespace SharpLib.Display
     [DataContract]
     public class TableLayout
     {
+        [DataMember]
+        public List<ColumnStyle> Columns { get; set; }
+
+        [DataMember]
+        public List<RowStyle> Rows { get; set; }
+
+
         public TableLayout()
         {
             Columns = new List<ColumnStyle>();
@@ -99,13 +106,6 @@ namespace SharpLib.Display
             //Both rows and columns have the same content.
             return true;
         }
-
-        [DataMember]
-        public List<ColumnStyle> Columns { get; set; }
-
-        [DataMember]
-        public List<RowStyle> Rows { get; set; }
-
 
     }
 }

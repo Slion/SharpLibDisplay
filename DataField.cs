@@ -28,9 +28,10 @@ namespace SharpLib.Display
     /// Each field is taking part in our display screen layout.
     /// </summary>
     [DataContract]
-    [KnownType(typeof(TableField))]
+    //All concrete types need to be listed as know type for serialization to function.
     [KnownType(typeof(TextField))]
     [KnownType(typeof(BitmapField))]
+    [KnownType(typeof(RecordingField))]
     public class DataField
     {
         protected DataField()

@@ -52,7 +52,9 @@
     <Compile Include="ClientSession.cs" />
     <Compile Include="DataField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecordingField.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="StatusField.cs" />
     <Compile Include="TableField.cs" />
     <Compile Include="TableLayout.cs" />
     <Compile Include="TextField.cs" />

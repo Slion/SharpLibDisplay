@@ -21,38 +21,18 @@ using System.Drawing;
 
 namespace SharpLib.Display
 {
-
     /// <summary>
-    /// Define a table data field on our display.
-    /// Data field can be either text or bitmap.
-    /// Each field is taking part in our display screen layout.
+    /// Define the recording field on our display.
     /// </summary>
     [DataContract]
-    public class TableField : DataField
+    public class RecordingField : StatusField
     {
-        protected TableField()
+        [DataMember]
+        public bool IsActive { get; set; }
+
+        public RecordingField()
         {
-            ColumnSpan = 1;
-            RowSpan = 1;
-        }
-
-        [DataMember]
-        public int Column { get; set; }
-
-        [DataMember]
-        public int Row { get; set; }
-
-        [DataMember]
-        public int ColumnSpan { get; set; }
-
-        [DataMember]
-        public int RowSpan { get; set; }
-
-        //
-        public bool IsSameLayout(TableField aField)
-        {
-            return (aField.ColumnSpan == ColumnSpan && aField.RowSpan == RowSpan);
-        }
+            IsActive = false;
+        }        
     }
-
 }

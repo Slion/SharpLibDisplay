@@ -25,6 +25,7 @@ namespace ConsoleClient
             Console.WriteLine("   l: set layout");
             Console.WriteLine("   stf: set text field");
             Console.WriteLine("   sbf: set bitmap field");
+            Console.WriteLine("   srf: set recording field");
             Console.WriteLine("-----------------------------------");
 
             //Create our client and connect to our server
@@ -84,6 +85,10 @@ namespace ConsoleClient
                     SetBitmapField();
                     break;
 
+                case "srf":
+                    SetRecordingField();
+                    break;
+
             }
 
             return false;
@@ -103,25 +108,29 @@ namespace ConsoleClient
         {
             TableLayout layout = new TableLayout(1, 1);
             iClient.SetLayout(layout);
-        }
-
-        public static void SetTextField()
-        {
+            //We need to create our fields
             DataField field = new TextField();
             iClient.CreateFields(new DataField[]
             {
                 field
             });
+        }
+
+        public static void SetTextField()
+        {
+            DataField field = new TextField();
             iClient.SetField(field);
         }
 
         public static void SetBitmapField()
         {
             DataField field = new BitmapField();
-            iClient.CreateFields(new DataField[]
-            {
-                field
-            });
+            iClient.SetField(field);
+        }
+
+        public static void SetRecordingField()
+        {
+            DataField field = new RecordingField();
             iClient.SetField(field);
         }
 

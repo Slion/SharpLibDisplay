@@ -23,35 +23,15 @@ namespace SharpLib.Display
 {
 
     /// <summary>
-    /// Define a table data field on our display.
-    /// Data field can be either text or bitmap.
-    /// Each field is taking part in our display screen layout.
+    /// Define a status data field on our display.
+    /// Status field is the base for fields typically not taking part in table layout.
+    /// Status fields are unique and global rather than being specified by each client.
     /// </summary>
     [DataContract]
-    public class TableField : DataField
+    public class StatusField : DataField
     {
-        protected TableField()
+        protected StatusField()
         {
-            ColumnSpan = 1;
-            RowSpan = 1;
-        }
-
-        [DataMember]
-        public int Column { get; set; }
-
-        [DataMember]
-        public int Row { get; set; }
-
-        [DataMember]
-        public int ColumnSpan { get; set; }
-
-        [DataMember]
-        public int RowSpan { get; set; }
-
-        //
-        public bool IsSameLayout(TableField aField)
-        {
-            return (aField.ColumnSpan == ColumnSpan && aField.RowSpan == RowSpan);
         }
     }
 
