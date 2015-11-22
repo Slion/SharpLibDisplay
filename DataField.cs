@@ -32,7 +32,7 @@ namespace SharpLib.Display
     [KnownType(typeof(TextField))]
     [KnownType(typeof(BitmapField))]
     [KnownType(typeof(RecordingField))]
-    public class DataField
+    public abstract class DataField
     {
         protected DataField()
         {
@@ -42,6 +42,15 @@ namespace SharpLib.Display
         //Generic layout properties
         [DataMember]
         public int Index { get; set; }
+
+
+        public bool IsTextField { get { return this is TextField; } }
+        public bool IsBitmapField { get { return this is BitmapField; } }
+        public bool IsRecordingField { get { return this is RecordingField; } }
+        public bool IsTableField { get { return this is TableField; } }
+        public bool IsStatusField { get { return this is StatusField; } }
+
+        public abstract bool IsSameLayout(DataField aField);
 
     }
 

@@ -33,6 +33,13 @@ namespace SharpLib.Display
         protected StatusField()
         {
         }
+
+        public override bool IsSameLayout(DataField aField)
+        {
+            //By default status field have the same layout if they have the same type
+            return GetType() == aField.GetType();
+        }
+
     }
 
 }

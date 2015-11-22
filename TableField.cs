@@ -49,9 +49,16 @@ namespace SharpLib.Display
         public int RowSpan { get; set; }
 
         //
-        public bool IsSameLayout(TableField aField)
+        public override bool IsSameLayout(DataField aField)
         {
-            return (aField.ColumnSpan == ColumnSpan && aField.RowSpan == RowSpan);
+            if (!aField.IsTableField)
+            {
+                return false;
+            }
+
+            TableField field = (TableField)aField;
+
+            return (field.ColumnSpan == ColumnSpan && field.RowSpan == RowSpan);
         }
     }
 
