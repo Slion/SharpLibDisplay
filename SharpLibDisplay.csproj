@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitmapField.cs" />
     <Compile Include="Callback.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientSession.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Service.cs" />
     <Compile Include="TableField.cs" />
     <Compile Include="TableLayout.cs" />
+    <Compile Include="TextField.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -105,5 +105,7 @@ namespace SharpLib.Display
 
         [DataMember]
         public List<RowStyle> Rows { get; set; }
+
+
     }
 }

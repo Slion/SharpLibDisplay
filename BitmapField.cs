@@ -23,25 +23,32 @@ namespace SharpLib.Display
 {
 
     /// <summary>
-    /// Define a data field on our display.
-    /// Data field can be either text or bitmap.
+    /// Define a bitmap field on our display.
     /// Each field is taking part in our display screen layout.
     /// </summary>
     [DataContract]
-    [KnownType(typeof(TableField))]
-    [KnownType(typeof(TextField))]
-    [KnownType(typeof(BitmapField))]
-    public class DataField
+    public class BitmapField : TableField
     {
-        protected DataField()
-        {
-            Index = 0;
+        public BitmapField()
+        {            
+            //Bitmap
+            Bitmap = null;
         }
 
-        //Generic layout properties
-        [DataMember]
-        public int Index { get; set; }
+        /// <summary>
+        /// Bitmap field constructor.
+        /// </summary>
+        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
+        /// <param name="aBitmap">Bitmap content.</param>
+        public BitmapField(int aIndex, Bitmap aBitmap)
+        {
+            Index = aIndex;
+            Bitmap = aBitmap;
+        }
 
+        //Bitmap properties
+        [DataMember]
+        public Bitmap Bitmap { get; set; }
     }
 
 }

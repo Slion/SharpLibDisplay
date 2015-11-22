@@ -88,7 +88,7 @@ namespace ConsoleServer
                         Console.WriteLine("BroadcastCloseEvent - " + client.SessionId);
                         client.Callback.OnCloseOrder(/*eventData*/);
                     }
-                    catch (Exception ex)
+                    catch //(Exception ex)
                     {
                         //inactiveClients.Add(client.Key);
                     }

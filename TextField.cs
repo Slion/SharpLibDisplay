@@ -23,24 +23,38 @@ namespace SharpLib.Display
 {
 
     /// <summary>
-    /// Define a data field on our display.
-    /// Data field can be either text or bitmap.
+    /// Define a text field on our display.
     /// Each field is taking part in our display screen layout.
     /// </summary>
     [DataContract]
-    [KnownType(typeof(TableField))]
-    [KnownType(typeof(TextField))]
-    [KnownType(typeof(BitmapField))]
-    public class DataField
+    public class TextField : TableField
     {
-        protected DataField()
+        public TextField()
         {
-            Index = 0;
+            //Text
+            Text = "";
+            Alignment = ContentAlignment.MiddleLeft;
         }
 
-        //Generic layout properties
+        /// <summary>
+        /// Text field constructor.
+        /// </summary>
+        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
+        /// <param name="aText">Text content.</param>
+        /// <param name="aAlignment">Text content alignment.</param>
+        public TextField(int aIndex, string aText = "", ContentAlignment aAlignment = ContentAlignment.MiddleLeft)
+        {
+            Index = aIndex;
+            Text = aText;
+            Alignment = aAlignment;
+        }
+
+        //Text properties
         [DataMember]
-        public int Index { get; set; }
+        public string Text { get; set; }
+
+        [DataMember]
+        public ContentAlignment Alignment { get; set; }
 
     }
 

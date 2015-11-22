@@ -30,48 +30,10 @@ namespace SharpLib.Display
     [DataContract]
     public class TableField : DataField
     {
-        public TableField()
-        {            
-            ColumnSpan = 1;
-            RowSpan = 1;
-            //Text
-            Text = "";
-            Alignment = ContentAlignment.MiddleLeft;
-            //Bitmap
-            Bitmap = null;
-        }
-
-        /// <summary>
-        /// Text field constructor.
-        /// </summary>
-        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
-        /// <param name="aText">Text content.</param>
-        /// <param name="aAlignment">Text content alignment.</param>
-        public TableField(int aIndex, string aText = "", ContentAlignment aAlignment = ContentAlignment.MiddleLeft)
+        protected TableField()
         {
             ColumnSpan = 1;
             RowSpan = 1;
-            Index = aIndex;
-            Text = aText;
-            Alignment = aAlignment;
-            //No bitmap then
-            Bitmap = null;
-        }
-
-        /// <summary>
-        /// Bitmap field constructor.
-        /// </summary>
-        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
-        /// <param name="aBitmap">Bitmap content.</param>
-        public TableField(int aIndex, Bitmap aBitmap)
-        {
-            ColumnSpan = 1;
-            RowSpan = 1;
-            Index = aIndex;
-            Bitmap = aBitmap;
-            //No text then
-            Text = "";
-            Alignment = ContentAlignment.MiddleLeft;
         }
 
         [DataMember]
@@ -86,21 +48,6 @@ namespace SharpLib.Display
         [DataMember]
         public int RowSpan { get; set; }
 
-        //Text properties
-        [DataMember]
-        public string Text { get; set; }
-
-        [DataMember]
-        public ContentAlignment Alignment { get; set; }
-
-        //Bitmap properties
-        [DataMember]
-        public Bitmap Bitmap { get; set; }
-
-        //
-        public bool IsBitmap { get { return Bitmap != null; } }
-        //
-        public bool IsText { get { return Bitmap == null; } }
         //
         public bool IsSameLayout(TableField aField)
         {

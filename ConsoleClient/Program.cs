@@ -23,8 +23,8 @@ namespace ConsoleClient
             Console.WriteLine("   c: close client");
             Console.WriteLine("   o: open client");
             Console.WriteLine("   l: set layout");
-            Console.WriteLine("   sdf: set data field");
-            Console.WriteLine("   stf: set table field");
+            Console.WriteLine("   stf: set text field");
+            Console.WriteLine("   sbf: set bitmap field");
             Console.WriteLine("-----------------------------------");
 
             //Create our client and connect to our server
@@ -76,12 +76,12 @@ namespace ConsoleClient
                     OpenClient();
                     break;
 
-                case "sdf":
-                    SetDataField();
+                case "stf":
+                    SetTextField();
                     break;
 
-                case "stf":
-                    SetTableField();
+                case "sbf":
+                    SetBitmapField();
                     break;
 
             }
@@ -105,21 +105,9 @@ namespace ConsoleClient
             iClient.SetLayout(layout);
         }
 
-        public static void SetDataField()
+        public static void SetTextField()
         {
-            DataField field = new DataField();
-            //Set our fields
-            iClient.CreateFields(new DataField[]
-            {
-                field
-            });
-            //
-            iClient.SetField(field);
-        }
-
-        public static void SetTableField()
-        {
-            TableField field = new TableField();
+            DataField field = new TextField();
             iClient.CreateFields(new DataField[]
             {
                 field
@@ -127,6 +115,15 @@ namespace ConsoleClient
             iClient.SetField(field);
         }
 
+        public static void SetBitmapField()
+        {
+            DataField field = new BitmapField();
+            iClient.CreateFields(new DataField[]
+            {
+                field
+            });
+            iClient.SetField(field);
+        }
 
         public static void OnCloseOrder()
         {
