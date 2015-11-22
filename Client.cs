@@ -34,6 +34,7 @@ namespace SharpLib.Display
         private bool resetingConnection = false;
 
         //private MainForm MainForm { get; set; }
+        public CommunicationState SessionState { get { return iClient.State; } }
         public string SessionId { get { return iClient.SessionId; } }
         public string Name { get; private set; }
         private TableLayout Layout { get; set; }
@@ -53,9 +54,9 @@ namespace SharpLib.Display
         /// <summary>
         /// Initialize our server connection.
         /// </summary>
-        public void Open()
+        public void Open(string aEndpointAddress = "net.tcp://localhost:8001/DisplayService")
         {
-            iClient = new ClientSession(this);
+            iClient = new ClientSession(this, aEndpointAddress);
         }
 
         /// <summary>
@@ -63,7 +64,10 @@ namespace SharpLib.Display
         /// </summary>
         public void Close()
         {
-            iClient.Close();
+            if (IsReady())
+            {
+                iClient.Close();
+            }
             iClient = null;
         }
 

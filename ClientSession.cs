@@ -38,8 +38,8 @@ namespace SharpLib.Display
     {
         public string SessionId { get { return InnerChannel.SessionId; } }
 
-        public ClientSession(ICallback aCallback)
-            : base(new InstanceContext(aCallback), new NetTcpBinding(SecurityMode.None, true), new EndpointAddress("net.tcp://localhost:8001/DisplayService"))
+        public ClientSession(ICallback aCallback, string aEndpointAddress)
+            : base(new InstanceContext(aCallback), new NetTcpBinding(SecurityMode.None, true), new EndpointAddress(aEndpointAddress))
         { }
 
         public void SetName(string aClientName)
