@@ -29,12 +29,6 @@ namespace SharpLib.Display
     [DataContract]
     public class TextField : TableField
     {
-        public TextField()
-        {
-            //Text
-            Text = "";
-            Alignment = ContentAlignment.MiddleLeft;
-        }
 
         /// <summary>
         /// Text field constructor.
@@ -42,9 +36,9 @@ namespace SharpLib.Display
         /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
         /// <param name="aText">Text content.</param>
         /// <param name="aAlignment">Text content alignment.</param>
-        public TextField(int aIndex, string aText = "", ContentAlignment aAlignment = ContentAlignment.MiddleLeft)
+        public TextField(string aText = "", ContentAlignment aAlignment = ContentAlignment.MiddleLeft, int aColumn = 0, int aRow = 0, int aColumnSpan = 1, int aRowSpan = 1)
+            : base(aColumn, aRow, aColumnSpan, aRowSpan)
         {
-            Index = aIndex;
             Text = aText;
             Alignment = aAlignment;
         }

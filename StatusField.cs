@@ -40,6 +40,13 @@ namespace SharpLib.Display
             return GetType() == aField.GetType();
         }
 
+        public override bool IsSameAs(DataField aField)
+        {
+            //By default status field are the same if they have the same type
+            //Typically each status field is unique so we are ok
+            return GetType() == aField.GetType();
+        }
+
     }
 
 }

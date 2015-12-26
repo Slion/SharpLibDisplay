@@ -36,13 +36,8 @@ namespace SharpLib.Display
     {
         protected DataField()
         {
-            Index = 0;
+
         }
-
-        //Generic layout properties
-        [DataMember]
-        public int Index { get; set; }
-
 
         public bool IsTextField { get { return this is TextField; } }
         public bool IsBitmapField { get { return this is BitmapField; } }
@@ -51,6 +46,7 @@ namespace SharpLib.Display
         public bool IsStatusField { get { return this is StatusField; } }
 
         public abstract bool IsSameLayout(DataField aField);
+        public abstract bool IsSameAs(DataField aField);
 
     }
 

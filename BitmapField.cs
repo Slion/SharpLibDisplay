@@ -40,9 +40,9 @@ namespace SharpLib.Display
         /// </summary>
         /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
         /// <param name="aBitmap">Bitmap content.</param>
-        public BitmapField(int aIndex, Bitmap aBitmap)
-        {
-            Index = aIndex;
+        public BitmapField(Bitmap aBitmap = null, int aColumn = 0, int aRow = 0, int aColumnSpan = 1, int aRowSpan = 1)
+            : base(aColumn, aRow, aColumnSpan, aRowSpan)
+        {            
             Bitmap = aBitmap;
         }
 

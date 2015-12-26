@@ -30,10 +30,12 @@ namespace SharpLib.Display
     [DataContract]
     public class TableField : DataField
     {
-        protected TableField()
+        protected TableField(int aColumn = 0, int aRow = 0, int aColumnSpan = 1, int aRowSpan = 1)
         {
-            ColumnSpan = 1;
-            RowSpan = 1;
+            Column = aColumn;
+            Row = aRow;
+            ColumnSpan = aColumnSpan;
+            RowSpan = aRowSpan;
         }
 
         [DataMember]
@@ -59,6 +61,19 @@ namespace SharpLib.Display
             TableField field = (TableField)aField;
 
             return (field.ColumnSpan == ColumnSpan && field.RowSpan == RowSpan);
+        }
+
+        //
+        public override bool IsSameAs(DataField aField)
+        {
+            if (!aField.IsTableField)
+            {
+                return false;
+            }
+
+            TableField field = (TableField)aField;
+            //Check that our fields have same position and size then
+            return (field.Column == Column && field.Row == Row && field.ColumnSpan == ColumnSpan && field.RowSpan == RowSpan);
         }
     }
 

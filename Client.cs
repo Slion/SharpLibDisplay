@@ -176,7 +176,7 @@ namespace SharpLib.Display
             bool fieldFound = false;
             foreach (DataField field in Fields)
             {
-                if (field.Index == aField.Index)
+                if (field.IsSameAs(aField))
                 {
                     //Update our field then
                     Fields[i] = aField;
@@ -209,7 +209,7 @@ namespace SharpLib.Display
                 int i = 0;
                 foreach (DataField existingField in Fields)
                 {
-                    if (existingField.Index == fieldUpdate.Index)
+                    if (existingField.IsSameAs(fieldUpdate))
                     {
                         //Update our field then
                         Fields[i] = fieldUpdate;
@@ -236,6 +236,7 @@ namespace SharpLib.Display
         /// <summary>
         /// Use this function when creating your fields.
         /// This must be done at least once after setting your layout.
+        /// Fields must be specified by column.
         /// </summary>
         /// <param name="aFields"></param>
         public void CreateFields(System.Collections.Generic.IList<DataField> aFields)

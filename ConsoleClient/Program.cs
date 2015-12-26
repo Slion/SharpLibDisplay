@@ -110,28 +110,40 @@ namespace ConsoleClient
             iClient.SetLayout(layout);
             //We need to create our fields
             DataField field = new TextField();
+            DataField recordingField = new RecordingField();
+
             iClient.CreateFields(new DataField[]
             {
-                field
+                field,
+                recordingField
             });
         }
 
         public static void SetTextField()
         {
             DataField field = new TextField();
-            iClient.SetField(field);
+            if (!iClient.SetField(field))
+            {
+                Console.WriteLine("ERROR: field not found! Check layout and field creation.");
+            }
         }
 
         public static void SetBitmapField()
         {
             DataField field = new BitmapField();
-            iClient.SetField(field);
+            if (!iClient.SetField(field))
+            {
+                Console.WriteLine("ERROR: field not found! Check layout and field creation.");
+            }
         }
 
         public static void SetRecordingField()
         {
             DataField field = new RecordingField();
-            iClient.SetField(field);
+            if (!iClient.SetField(field))
+            {
+                Console.WriteLine("ERROR: field not found! Check layout and field creation.");
+            }
         }
 
         public static void OnCloseOrder()
