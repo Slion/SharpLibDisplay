@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>SharpLibDisplay</id>
+        <version>0.1.3</version>
+        <title>C# Display Library</title>
+        <authors>Stéphane Lenclud</authors>
+        <owners>Stéphane Lenclud</owners>
+        <licenseUrl>http://www.gnu.org/copyleft/gpl.html</licenseUrl>
+        <projectUrl>https://sharplibdisplay.codeplex.com/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>C# Consumer Electronics Display Library.</description>
+        <releaseNotes>v0.1.3
+Field comparison refactoring.
+
+v0.1.2
+Layout comparison refactoring.
+
+v0.1.1
+Easy data field type query.
+
+v0.1.0
+Fields refactoring.
+Adding support for recording field.
+
+v0.0.2
+Added CloseOrderEvent.
+
+v0.0.1
+First published version.</releaseNotes>
+        <copyright>Stéphane Lenclud</copyright>
+        <language />
+        <tags>Display LCD VFD HTPC</tags>
+    </metadata>
+    <files>
+        <file src="bin\Release\SharpLibDisplay.dll" target="lib\net40\SharpLibDisplay.dll" />
+    </files>
+</package>
