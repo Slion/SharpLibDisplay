@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SharpLibDisplay</id>
-        <version>0.1.3</version>
+        <version>0.2.4</version>
         <title>C# Display Library</title>
         <authors>Stéphane Lenclud</authors>
         <owners>Stéphane Lenclud</owners>
@@ -10,7 +10,10 @@
         <projectUrl>https://sharplibdisplay.codeplex.com/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>C# Consumer Electronics Display Library.</description>
-        <releaseNotes>v0.1.3
+        <releaseNotes>v0.2.4
+Adds text property to recording field.
+
+v0.1.3
 Field comparison refactoring.
 
 v0.1.2
