@@ -47,6 +47,11 @@ namespace SharpLib.Display
             Channel.SetName(aClientName);
         }
 
+        public void SetPriority(uint aPriority)
+        {
+            Channel.SetPriority(aPriority);
+        }
+
         public void SetLayout(TableLayout aLayout)
         {
             Channel.SetLayout(aLayout);

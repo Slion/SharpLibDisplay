@@ -23,6 +23,7 @@ namespace ConsoleServer
     {
         public string SessionId { get; set; }
         public string Name { get; set; }
+        public uint Priority { get; set; }
         public ICallback Callback { get; set; }
 
         ServerSession()
@@ -48,6 +49,16 @@ namespace ConsoleServer
             ConsoleTrace();
 
             ConsoleServer.Program.RemoveClient(this);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aPriority"></param>
+        public void SetPriority(uint aPriority)
+        {
+            ConsoleTrace();
+            Priority = aPriority;
         }
 
         //

@@ -41,6 +41,15 @@ namespace SharpLib.Display
         void SetName(string aClientName);
 
         /// <summary>
+        /// Define client priority.
+        /// Client with higher priority should come first and take control of the display.
+        /// </summary>
+        /// <param name="aPriority"></param>
+        [OperationContract(IsOneWay = true)]
+        void SetPriority(uint aPriority);
+
+        /// <summary>
+        /// Define table layout for our fields on our display.
         /// </summary>
         /// <param name="aLayout"></param>
         [OperationContract(IsOneWay = true)]
