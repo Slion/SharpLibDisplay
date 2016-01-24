@@ -101,6 +101,7 @@ namespace ConsoleClient
             //Connect using unique name
             string name = "Client-" + (iClient.ClientCount() - 1);
             iClient.SetName(name);
+            iClient.SetPriority(Priorities.Default);
             Console.WriteLine("Name: " + name);
         }
 

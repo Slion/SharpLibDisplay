@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2014-2015 Stéphane Lenclud.
+﻿// Copyright (C) 2014-2016 Stéphane Lenclud.
 //
 // This file is part of SharpLibDisplay.
 //
@@ -23,6 +23,7 @@ using System.ServiceModel;
 
 namespace SharpLib.Display
 {
+
     /// <summary>
     /// Handle connection with our Sharp Display Server.
     /// If the connection is faulted it will attempt to restart it.
@@ -65,6 +66,7 @@ namespace SharpLib.Display
             }
         }
         public string Name { get; private set; }
+        public uint Priority { get; private set; }
         private TableLayout Layout { get; set; }
         private System.Collections.Generic.IList<DataField> Fields { get; set; }
 
@@ -152,6 +154,17 @@ namespace SharpLib.Display
             Name = aClientName;
             CheckConnection();
             iClient.SetName(aClientName);
+        }
+
+        /// <summary>
+        /// Set client priority.
+        /// </summary>
+        /// <param name="aPriority"></param>
+        public void SetPriority(uint aPriority)
+        {
+            Priority = aPriority;
+            CheckConnection();
+            iClient.SetPriority(aPriority);
         }
 
         /// <summary>
