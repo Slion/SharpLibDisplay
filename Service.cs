@@ -77,5 +77,13 @@ namespace SharpLib.Display
         [OperationContract()]
         int ClientCount();
 
+        /// <summary>
+        /// Trigger server side events matching the given name.
+        /// </summary>
+        /// <returns></returns>
+        [OperationContract(IsOneWay = true)]
+        void TriggerEventsByName(string aEventName);
+
+
     }
 }

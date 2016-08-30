@@ -26,6 +26,7 @@ namespace ConsoleClient
             Console.WriteLine("   stf: set text field");
             Console.WriteLine("   sbf: set bitmap field");
             Console.WriteLine("   srf: set recording field");
+            Console.WriteLine("   t: trigger event by name");
             Console.WriteLine("-----------------------------------");
 
             //Create our client and connect to our server
@@ -87,6 +88,10 @@ namespace ConsoleClient
 
                 case "srf":
                     SetRecordingField();
+                    break;
+
+                case "t":
+                    iClient.TriggerEventsByName("MyEventName");
                     break;
 
             }

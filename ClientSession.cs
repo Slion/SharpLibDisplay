@@ -72,6 +72,11 @@ namespace SharpLib.Display
             return Channel.ClientCount();
         }
 
+        public void TriggerEventsByName(string aEventName)
+        {
+            Channel.TriggerEventsByName(aEventName);
+        }
+
         public bool IsReady()
         {
             return State == CommunicationState.Opened || State == CommunicationState.Created;

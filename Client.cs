@@ -270,6 +270,18 @@ namespace SharpLib.Display
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aEventName"></param>
+        /// <returns></returns>
+        public void TriggerEventsByName(string aEventName)
+        {
+            CheckConnection();
+            iClient.TriggerEventsByName(aEventName);
+        }
+
+
+        /// <summary>
         /// From ICallback
         /// Not used I believe.
         /// </summary>

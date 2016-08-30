@@ -107,6 +107,17 @@ namespace ConsoleServer
             //return SharpDisplayManager.Program.iMainForm.iClients.Count;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aEventName"></param>
+        public void TriggerEventsByName(string aEventName)
+        {
+            ConsoleTrace(aEventName);
+        }
+
+
         /// <summary>
         /// Define standard console output upon receiving client requests.
         /// </summary>
