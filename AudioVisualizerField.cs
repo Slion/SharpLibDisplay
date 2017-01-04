@@ -23,31 +23,27 @@ namespace SharpLib.Display
 {
 
     /// <summary>
-    /// Define a data field on our display.
-    /// Data field can be either text or bitmap.
+    /// Define an audio visualizer table field for our display.
     /// Each field is taking part in our display screen layout.
+    /// TODO: Add properties to allow per client customization of audio visualizer.
     /// </summary>
     [DataContract]
-    //All concrete types need to be listed as known type for serialization to function.
-    [KnownType(typeof(TextField))]
-    [KnownType(typeof(BitmapField))]
-    [KnownType(typeof(RecordingField))]
-    [KnownType(typeof(AudioVisualizerField))]    
-    public abstract class DataField
+    public class AudioVisualizerField : TableField
     {
-        protected DataField()
+        public AudioVisualizerField()
         {
-
         }
 
-        public bool IsTextField { get { return this is TextField; } }
-        public bool IsBitmapField { get { return this is BitmapField; } }
-        public bool IsRecordingField { get { return this is RecordingField; } }
-        public bool IsTableField { get { return this is TableField; } }
-        public bool IsStatusField { get { return this is StatusField; } }
-
-        public abstract bool IsSameLayout(DataField aField);
-        public abstract bool IsSameAs(DataField aField);
+        /// <summary>
+        /// Audio Visualizer field constructor.
+        /// </summary>
+        /// <param name="aIndex">Field index, used to uniquely identify each field in our layout.</param>
+        /// <param name="aBitmap">Bitmap content.</param>
+        public AudioVisualizerField(int aColumn = 0, int aRow = 0, int aColumnSpan = 1, int aRowSpan = 1)
+            : base(aColumn, aRow, aColumnSpan, aRowSpan)
+        {
+            
+        }
 
     }
 

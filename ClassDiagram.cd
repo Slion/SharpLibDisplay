@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="SharpLib.Display.BitmapField" Collapsed="true">
+    <Position X="4.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BitmapField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.Client" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="SharpLib.Display.Client.CloseOrderDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Client.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAQAAgAACAAoAkEAAAAAAQIAICBIAIISAAARACAgAQ=</HashCode>
+      <FileName>Client.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="iClient" />
+      <Property Name="Layout" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Fields" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpLib.Display.ClientSession" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAgAAAAAAAAAAIAACAAAAACAAARAAAAAQ=</HashCode>
+      <FileName>ClientSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.DataField" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAAAAAAAgAAAAAAIAAAAACAABAAAAAAABAAAAA=</HashCode>
+      <FileName>DataField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.Priorities" Collapsed="true">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAQAAAIAAAAAgAAABAAACgAAQABAA=</HashCode>
+      <FileName>Priorities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.RecordingField" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>RecordingField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.StatusField" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>StatusField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.TableField" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAQAACAAhAAAgAAAAAAAAA=</HashCode>
+      <FileName>TableField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.TableLayout" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAgAAAA=</HashCode>
+      <FileName>TableLayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.TextField" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>TextField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpLib.Display.AudioVisualizerField" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AudioVisualizerField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SharpLib.Display.ICallback" Collapsed="true">
+    <Position X="10.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Callback.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SharpLib.Display.IService" Collapsed="true">
+    <Position X="10.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAgAAAAAAAAAAAAACAAAAAAAAARAAAAAQ=</HashCode>
+      <FileName>Service.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

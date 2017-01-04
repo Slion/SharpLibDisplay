@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioVisualizerField.cs" />
     <Compile Include="BitmapField.cs" />
     <Compile Include="Callback.cs" />
     <Compile Include="Client.cs" />
@@ -59,6 +60,9 @@
     <Compile Include="TableField.cs" />
     <Compile Include="TableLayout.cs" />
     <Compile Include="TextField.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
