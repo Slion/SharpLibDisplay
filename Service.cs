@@ -47,6 +47,14 @@ namespace SharpLib.Display
         /// <param name="aPriority"></param>
         [OperationContract(IsOneWay = true)]
         void SetPriority(uint aPriority);
+        
+        /// <summary>
+        /// Define to which target following calls to SetLayout, SetField and SetFields will apply.
+        /// Our default target is our Client.
+        /// </summary>
+        /// <param name="aPriority"></param>
+        [OperationContract(IsOneWay = true)]
+        void SetTarget(Target aTarget);
 
         /// <summary>
         /// Define table layout for our fields on our display.

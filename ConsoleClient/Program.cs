@@ -27,6 +27,7 @@ namespace ConsoleClient
             Console.WriteLine("   sbf: set bitmap field");
             Console.WriteLine("   srf: set recording field");
             Console.WriteLine("   savf: set audio visualizer field");
+            Console.WriteLine("   scf: set client field");
             Console.WriteLine("   t: trigger event by name");
             Console.WriteLine("-----------------------------------");
 
@@ -91,6 +92,10 @@ namespace ConsoleClient
                     SetAudioVisualizerField();
                     break;
 
+                case "scf":
+                    SetClientField();
+                    break;
+
                 case "srf":
                     SetRecordingField();
                     break;
@@ -112,6 +117,7 @@ namespace ConsoleClient
             string name = "Client-" + (iClient.ClientCount() - 1);
             iClient.SetName(name);
             iClient.SetPriority(Priorities.Default);
+            iClient.SetTarget(Target.Client);
             Console.WriteLine("Name: " + name);
         }
 
@@ -157,6 +163,14 @@ namespace ConsoleClient
             }
         }
 
+        public static void SetClientField()
+        {
+            DataField field = new ClientField();
+            if (!iClient.SetField(field))
+            {
+                Console.WriteLine("ERROR: field not found! Check layout and field creation.");
+            }
+        }
 
         public static void SetRecordingField()
         {

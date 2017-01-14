@@ -50,6 +50,7 @@
     <Compile Include="BitmapField.cs" />
     <Compile Include="Callback.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="ClientField.cs" />
     <Compile Include="ClientSession.cs" />
     <Compile Include="DataField.cs" />
     <Compile Include="Priorities.cs" />
@@ -59,7 +60,9 @@
     <Compile Include="StatusField.cs" />
     <Compile Include="TableField.cs" />
     <Compile Include="TableLayout.cs" />
+    <Compile Include="Target.cs" />
     <Compile Include="TextField.cs" />
+    <Compile Include="View.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

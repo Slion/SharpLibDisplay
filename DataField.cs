@@ -32,7 +32,8 @@ namespace SharpLib.Display
     [KnownType(typeof(TextField))]
     [KnownType(typeof(BitmapField))]
     [KnownType(typeof(RecordingField))]
-    [KnownType(typeof(AudioVisualizerField))]    
+    [KnownType(typeof(AudioVisualizerField))]
+    [KnownType(typeof(ClientField))]    
     public abstract class DataField
     {
         protected DataField()
@@ -42,9 +43,11 @@ namespace SharpLib.Display
 
         public bool IsTextField { get { return this is TextField; } }
         public bool IsBitmapField { get { return this is BitmapField; } }
+        public bool IsAudioVisualizerField { get { return this is AudioVisualizerField; } }
         public bool IsRecordingField { get { return this is RecordingField; } }
         public bool IsTableField { get { return this is TableField; } }
         public bool IsStatusField { get { return this is StatusField; } }
+        public bool IsClientField { get { return this is ClientField; } }
 
         public abstract bool IsSameLayout(DataField aField);
         public abstract bool IsSameAs(DataField aField);

@@ -52,6 +52,11 @@ namespace SharpLib.Display
             Channel.SetPriority(aPriority);
         }
 
+        public void SetTarget(Target aTarget)
+        {
+            Channel.SetTarget(aTarget);
+        }
+
         public void SetLayout(TableLayout aLayout)
         {
             Channel.SetLayout(aLayout);

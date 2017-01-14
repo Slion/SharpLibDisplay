@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>SharpLibDisplay</id>
-        <version>0.2.8</version>
+        <version>0.3.2</version>
         <title>C# Display Library</title>
         <authors>Stéphane Lenclud</authors>
         <owners>Stéphane Lenclud</owners>
@@ -10,7 +10,16 @@
         <projectUrl>https://sharplibdisplay.codeplex.com/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>C# Consumer Electronics Display Library.</description>
-        <releaseNotes>v0.2.8
+        <releaseNotes>v0.3.2
+Adding view class.
+
+v0.3.1
+Adding support for client field.
+
+v0.3.0
+Adding support for targets.
+
+v0.2.8
 Fixing broken NuGet package.
 
 v0.2.7

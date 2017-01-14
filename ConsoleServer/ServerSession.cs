@@ -24,6 +24,7 @@ namespace ConsoleServer
         public string SessionId { get; set; }
         public string Name { get; set; }
         public uint Priority { get; set; }
+        public Target Target { get; set; }
         public ICallback Callback { get; set; }
 
         ServerSession()
@@ -60,6 +61,18 @@ namespace ConsoleServer
             ConsoleTrace();
             Priority = aPriority;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aPriority"></param>
+        public void SetTarget(Target aTarget)
+        {
+            ConsoleTrace();
+            Target = aTarget;
+        }
+
+
 
         //
         public void SetName(string aClientName)

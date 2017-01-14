@@ -67,7 +67,9 @@ namespace SharpLib.Display
         }
         public string Name { get; private set; }
         public uint Priority { get; private set; }
+        public Target Target { get; private set; }
         private TableLayout Layout { get; set; }
+        private TableLayout DisplayLayout { get; set; }
         private System.Collections.Generic.IList<DataField> Fields { get; set; }
 
         public delegate void CloseOrderDelegate();
@@ -76,8 +78,8 @@ namespace SharpLib.Display
 
         public Client()
         {
-            Name = "";
             Fields = new DataField[]{};
+            Close();
         }
 
         /// <summary>
@@ -86,7 +88,7 @@ namespace SharpLib.Display
         public void Open(string aEndpointAddress = "net.tcp://localhost:8001/DisplayService")
         {
             Close(); //Make sure we close any earlier connection
-            iClient = new ClientSession(this, aEndpointAddress);
+            iClient = new ClientSession(this, aEndpointAddress);            
         }
 
         /// <summary>
@@ -99,6 +101,8 @@ namespace SharpLib.Display
                 iClient.Close();
             }
             iClient = null;
+            Target = Target.Client;
+            Name = "";
         }
 
         /// <summary>
@@ -165,6 +169,17 @@ namespace SharpLib.Display
             Priority = aPriority;
             CheckConnection();
             iClient.SetPriority(aPriority);
+        }
+
+        /// <summary>
+        /// Set client target.
+        /// </summary>
+        /// <param name="aPriority"></param>
+        public void SetTarget(Target aTarget)
+        {
+            Target = aTarget;
+            CheckConnection();
+            iClient.SetTarget(aTarget);
         }
 
         /// <summary>
