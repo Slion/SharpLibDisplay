@@ -9,7 +9,7 @@ namespace SharpLib.Display
     /// Define a view to be rendered on our display.
     /// TODO: Should this be used by our client too?
     /// </summary>
-    class View
+    public class View
     {
         public View()
         {
