@@ -33,6 +33,7 @@ namespace SharpLib.Display
     {
         private ClientSession iClient;
         private bool resetingConnection = false;
+        string iAddress = "";
 
         /// <summary>
         /// 
@@ -87,6 +88,7 @@ namespace SharpLib.Display
         /// </summary>
         public void Open(string aEndpointAddress = "net.tcp://localhost:8001/DisplayService")
         {
+            iAddress = aEndpointAddress;
             Close(); //Make sure we close any earlier connection
             iClient = new ClientSession(this, aEndpointAddress);            
         }
@@ -123,16 +125,19 @@ namespace SharpLib.Display
             if (!IsReady() && !resetingConnection)
             {
                 //Try to reconnect
-                Open();
+                string name = Name; // preserve our name
+                Open(iAddress); // Make sure we use the proper address
 
                 //Avoid stack overflow in case of persisting failure
+                // TODO: use mutex?
                 resetingConnection = true;
 
                 try
                 {
                     //On reconnect there is a bunch of properties we need to reset
-                    if (Name != "")
+                    if (name != "")
                     {
+                        Name = name;
                         iClient.SetName(Name);
                     }
 
@@ -141,8 +146,8 @@ namespace SharpLib.Display
                 }
                 finally
                 {
-                    //Make sure our this state does not get out of sync
-                    resetingConnection = true;
+                    //Make sure our state does not get out of sync
+                    resetingConnection = false;
                 }
             }
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using System.ServiceModel.Channels; // For Binding
 using SharpLib.Display;
 
 namespace ConsoleServer
@@ -62,7 +63,18 @@ namespace ConsoleServer
                     new Uri[] { new Uri(aBaseUri) }
                 );
 
-            iServiceHost.AddServiceEndpoint(typeof(IService), new NetTcpBinding(SecurityMode.None, true), aAddress);
+            Binding binding = new NetTcpBinding(SecurityMode.None, true);
+            // Here we define our timeouts
+            // See: https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/configuring-timeout-values-on-a-binding
+            // I believe they should all be set to 10mn by default, let's just set them to 1 mn for testing purposes
+            binding.OpenTimeout = new TimeSpan(0, 1, 0);
+            binding.CloseTimeout = new TimeSpan(0, 1, 0);
+            binding.SendTimeout = new TimeSpan(0, 1, 0);
+            // Lower this so that we can test and debug our falted issue
+            // Make it higher if you don't want timeout after 10 seconds
+            binding.ReceiveTimeout = new TimeSpan(0, 0, 10);
+
+            iServiceHost.AddServiceEndpoint(typeof(IService), binding, aAddress);
             iServiceHost.Open();
         }
 
@@ -107,7 +119,7 @@ namespace ConsoleServer
         static public void RemoveClient(ServerSession aClient)
         {
             iClients.Remove(aClient);
-            Console.WriteLine("Client count: " + iClients.Count);
+           Console.WriteLine("Client count: " + iClients.Count);
         }
 
 
